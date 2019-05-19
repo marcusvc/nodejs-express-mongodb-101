@@ -9,7 +9,7 @@ var messageSchema = new Schema({
    body: {
       type: String
    },
-   Created_date: {
+   created_date: {
       type: Date,
       default: Date.now
    }
