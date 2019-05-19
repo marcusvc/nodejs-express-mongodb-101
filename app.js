@@ -7,7 +7,14 @@ bodyParser = require('body-parser');
 mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/msgdb', {useNewUrlParser: true});
+uri = process.env.MONGODB_URI || 'mongodb://localhost/msgdb';
+mongoose.connect(uri, {useNewUrlParser: true}, function(err, db){
+    if (err) {
+        console.log('Unable to connect to the mongoDB server. Error:', err);
+    } else {
+        console.log('Connection established to', url);
+    }
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -16,4 +23,3 @@ routes(app);
 app.listen(port, function() {
     console.log('Server running on %s', port);
 });
-
