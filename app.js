@@ -8,11 +8,11 @@ mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 uri = process.env.MONGODB_URI || 'mongodb://localhost/msgdb';
-mongoose.connect(uri, {useNewUrlParser: true}, function(err, db){
+mongoose.connect(uri, {useNewUrlParser: true}, function(err){
     if (err) {
         console.log('Unable to connect to the mongoDB server. Error:', err);
     } else {
-        console.log('Connection established to', url);
+        console.log('Connection established to %s', uri);
     }
 });
 
